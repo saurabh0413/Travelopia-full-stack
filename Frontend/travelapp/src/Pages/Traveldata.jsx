@@ -12,6 +12,7 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import axios from "axios";
+import Navbar from "../Components/Navbar";
 export const Traveldata = () => {
   const toast = useToast();
 
@@ -41,6 +42,7 @@ export const Traveldata = () => {
   };
   return (
     <>
+      <Navbar />
       <Heading as="h1" mb="8" textAlign="center">
         Travel Details
       </Heading>
