@@ -11,6 +11,9 @@
     "type": "git",
     "url": "git+https://github.com/saurabh0413/Travelopia-full-stack.git"
   },
+  "engines": {
+    "node": ">=14 <15"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
