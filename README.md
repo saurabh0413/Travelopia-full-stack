@@ -15,7 +15,7 @@ Backend : Node.js, Express.js, MongoDb, Mongoose
 # npm start 
   ---Runs the app in the development mode.
   ---Open http://localhost:3000 to view it in your browser.
-  ---go to /Frontend folder and run 
+  ---go to /Frontend/travelapp folder and run 
 
 2. Backend 
 # npm run test 
