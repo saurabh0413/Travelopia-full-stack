@@ -22,7 +22,7 @@ export const Traveldata = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://localhost:8787/travelinfo", data);
+      await axios.post("https://travel-gixb.onrender.com/travelinfo", data);
       toast({
         title: "Your data added successfully",
 

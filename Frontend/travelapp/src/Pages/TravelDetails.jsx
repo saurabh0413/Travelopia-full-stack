@@ -1,8 +1,9 @@
-import { Table, Thead, Tbody, Tr, Th, Td, Text } from "@chakra-ui/react";
+import { Table, Thead, Tbody, Tr, Th, Td, Text, Spinner } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import styled from "styled-components";
+
 const StyledTable = styled(Table)`
   border-collapse: collapse;
   width: 100%;
@@ -28,21 +29,27 @@ const StyledTable = styled(Table)`
     background-color: #ddd;
   }
 `;
+
 export const TravelDetails = () => {
   const [traveldata, setTravelData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getData();
   }, []);
+
   const getData = async () => {
     try {
-      let Data = await axios.get("http://localhost:8787/travelinfo");
+      let Data = await axios.get("https://travel-gixb.onrender.com/travelinfo");
       Data = await Data.data;
       setTravelData(Data);
+      setIsLoading(false);
     } catch (err) {
       console.log(err.message);
+      setIsLoading(false);
     }
   };
+
   return (
     <>
       <Navbar />
@@ -59,16 +66,26 @@ export const TravelDetails = () => {
             </Tr>
           </Thead>
           <Tbody>
-            { traveldata ? traveldata.map((item, index) => (
-              <Tr key={index}>
-                <Td>{index + 1}</Td>
-                <Td>{item.Name}</Td>
-                <Td>{item.Email}</Td>
-                <Td>{item.Location}</Td>
-                <Td>{item.No_of_travellers}</Td>
-                <Td>{item.Budget}</Td>
+            { isLoading ? (
+              <Tr>
+                <Td colSpan={6} textAlign="center"><Spinner /></Td>
               </Tr>
-            )) : <Text>No data available</Text>}
+            ) : traveldata.length ? (
+              traveldata.map((item, index) => (
+                <Tr key={index}>
+                  <Td>{index + 1}</Td>
+                  <Td>{item.Name}</Td>
+                  <Td>{item.Email}</Td>
+                  <Td>{item.Location}</Td>
+                  <Td>{item.No_of_travellers}</Td>
+                  <Td>{item.Budget}</Td>
+                </Tr>
+              ))
+            ) : (
+              <Tr>
+                <Td colSpan={6} textAlign="center"><Text>No data available</Text></Td>
+              </Tr>
+            )}
           </Tbody>
         </Table>
       </StyledTable>
