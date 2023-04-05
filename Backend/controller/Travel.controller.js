@@ -1,7 +1,13 @@
 const { Travel } = require("../model/Travel.model");
 
 const postTravelData = async (req, res) => {
-  console.log(req.body);
+  try {
+    const TRAVEL_DATA = new Travel(req.body);
+    await TRAVEL_DATA.save();
+    res.send(TRAVEL_DATA);
+  } catch (err) {
+    throw err;
+  }
 };
 
 const getTravelData = async (req, res) => {
