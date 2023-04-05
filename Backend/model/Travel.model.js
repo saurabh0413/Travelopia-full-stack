@@ -1,11 +1,13 @@
+const { default: mongoose } = require("mongoose");
 
+const travelDataSchema = mongoose.Schema({
+  Name: { type: String, required: true },
+  Email: { type: String, required: true },
+  Location: { type: String, required: true },
+  No_of_travellers: { type: Number, required: true },
+  Budget: { type: Number, required: true },
+});
 
-const postTravelData = async(req,res)=>{
+const Travel = mongoose.model("travel", travelDataSchema);
 
-}
-
-const getTravelData = async(req,res)=>{
-
-}
-module.exports = {postTravelData,getTravelData}
-
+module.exports = { Travel };
