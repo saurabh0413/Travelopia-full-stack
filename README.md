@@ -11,7 +11,7 @@ Frontend: React.js, Chakra-ui
 Backend : Node.js, Express.js, MongoDb, Mongoose
 
 # deployed-backend-url
- -- https://travelopia-backend-roe5.onrender.com
+ -- https://travelopia-backend-roe5.onrender.com/travelinfo
 
 # deployed-app
  --- https://travelopia-full-stack.vercel.app/
